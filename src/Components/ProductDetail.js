@@ -57,9 +57,10 @@ const ProductDetail = () => {
     return (
       <div className="container mt-5 ">
         <div className="row ">
-          <div className="col-lg-5 col-md-6 cols-m-12 col-xs-12">
+          <div className="col-lg-4 col-md-6 cols-m-12 col-xs-12">
             <img
               src={product.image}
+              className="d-block w-100"
               alt="Detail_image"
               height="400px"
               width="350px"
@@ -85,7 +86,7 @@ const ProductDetail = () => {
             </NavLink>
             <NavLink
               to="/products"
-              className="btn btn-outline-dark ms-1 py-2 px-4 mt-1 "
+              className="btn btn-outline-dark ms-2 py-2 px-4 m-2  "
             >
               Back to products
             </NavLink>

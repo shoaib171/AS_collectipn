@@ -29,7 +29,7 @@ const Products = () => {
     GetProducts();
   }, []);
   const FilterProduct = (cart) => {
-    const updatedList = data.filter((x) => x.category == cart);
+    const updatedList = data.filter((x) => x.category === cart);
     setFilter(updatedList);
   };
   const Loaded = () => {
@@ -53,67 +53,77 @@ const Products = () => {
   const ShowProducts = () => {
     return (
       <>
-        <div className=" col-lg-12 col-md-12 col-sm-12 col-xs-12 buttons d-flex justify-content-center mb-5 pb-5   ">
-          <button
-            className="btn btn-outline-dark me-1"
-            onClick={() => setFilter(data)}
-          >
-            All
-          </button>
-          <button
-            className="btn btn-outline-dark me-1"
-            onClick={() => FilterProduct("men's clothing")}
-          >
-            Men's clothing
-          </button>
-          <button
-            className="btn btn-outline-dark me-1"
-            onClick={() => FilterProduct("women's clothing")}
-          >
-            Women's clothing
-          </button>
-          <button
-            className="btn btn-outline-dark me-1"
-            onClick={() => FilterProduct("jewelery")}
-          >
-            Jewelry
-          </button>
-          <button
-            className="btn btn-outline-dark me-1"
-            onClick={() => FilterProduct("electronics")}
-          >
-            Electronics
-          </button>
-        </div>
-        {Filter?.map((product, index) => {
-          console.log(product, "product");
-          return (
-            <>
-              <div className="col-md-3 mb-4">
-                <div className="card h-100 text-center p-4" key={product.id}>
-                  <img
-                    src={product.image}
-                    className="card-img-top"
-                    alt={product.title}
-                    height="250px"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title  mb-0">
-                      {product.title.substring(0, 12)}...
-                    </h5>
-                    <p className="card-text lead fw-bold">${product.price}</p>
-                    <NavLink
-                      to={`/productDetail/${product.id}`}
-                      className="btn btn-outline-dark"
+        <div className="container text-center">
+          <div className="row">
+            <div className="  col-lg-12 col-md-12 col-sm-12 m-sm-2  col-xs-12  buttons  mb-5 pb-5">
+              <button
+                className="btn btn-outline-dark me-2 m-2"
+                onClick={() => setFilter(data)}
+              >
+                All
+              </button>
+              <button
+                className="btn btn-outline-dark me-2"
+                onClick={() => FilterProduct("men's clothing")}
+              >
+                Men's clothing
+              </button>
+              <button
+                className="btn btn-outline-dark me-2  "
+                onClick={() => FilterProduct("women's clothing")}
+              >
+                Women's clothing
+              </button>
+              <button
+                className="btn btn-outline-dark me-2  "
+                onClick={() => FilterProduct("jewelery")}
+              >
+                Jewelry
+              </button>
+              <button
+                className="btn btn-outline-dark me-1 m-1 "
+                onClick={() => FilterProduct("electronics")}
+              >
+                Electronics
+              </button>
+            </div>
+
+            {Filter?.map((product, index) => {
+              console.log(product, "product");
+              return (
+                <>
+                  <div className="col-lg-3 col-md-6 mb-4">
+                    <div
+                      className="card h-100 text-center p-4"
+                      key={product.id}
                     >
-                      BuyNow
-                    </NavLink>
+                      <img
+                        src={product.image}
+                        className="card-img-top"
+                        alt={product.title}
+                        height="250px"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title  mb-0">
+                          {product.title.substring(0, 12)}...
+                        </h5>
+                        <p className="card-text lead fw-bold">
+                          ${product.price}
+                        </p>
+                        <NavLink
+                          to={`/productDetail/${product.id}`}
+                          className="btn btn-outline-dark"
+                        >
+                          BuyNow
+                        </NavLink>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </>
-          );
-        })}
+                </>
+              );
+            })}
+          </div>
+        </div>
       </>
     );
   };
@@ -128,9 +138,7 @@ const Products = () => {
           </div>
         </div>
 
-        <div className="row justify-content-center ">
-          {loading ? <Loaded /> : <ShowProducts />}
-        </div>
+        {loading ? <Loaded /> : <ShowProducts />}
       </div>
     </div>
   );

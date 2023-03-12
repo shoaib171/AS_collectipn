@@ -11,47 +11,47 @@ const Cart = () => {
   const CartItem = (product) => {
     return (
       <div className="container mt-3 shadow-sm py-2">
-        <div className="row py-2">
+        <div className="row ">
           <div className="col-3 ">
             <img
               src={product.image}
+              className="d-block w-100"
               width={"80px"}
               height={"80px"}
               alt={product.title}
             />
           </div>
-          <div className="col-3 ">
+          <div className="col-6">
             <h3>{`${product.title.substring(0, 18)}...`}</h3>
-          </div>
-          <div className="col-4">
-            <p className="lead fw-bold">
+
+            <p className="lead fw-bolder">
               {product.qty} X $ {product.price}=$
               {product.qty * product.price}
             </p>
           </div>
 
-          <div className="col-2">
+          <div className="col-3">
             <button
               className="btn btn-outline-dark me-4"
-              onClick={() => HandleButton(product)}
+              onClick={() => dispatch(ADD_ITEM(product))}
             >
-              <i className="fa fa-minus"></i>
+              <i className="fa fa-plus"></i>
             </button>
             <button
               className="btn btn-outline-dark me-4"
-              onClick={() => HandleButton(product)}
+              onClick={() => dispatch(DELETE_ITEM(product))}
             >
-              <i className="fa fa-plus"></i>
+              <i className="fa fa-minus"></i>
             </button>
           </div>
         </div>
       </div>
     );
   };
-  const HandleButton = (product) => {
-    dispatch(ADD_ITEM(product.qty));
-    dispatch(DELETE_ITEM(product.id));
-  };
+  // const HandleButton = (product) => {
+  //   dispatch(ADD_ITEM(product.qty));
+  //   dispatch(DELETE_ITEM(product.id));
+  // };
   const CartMessage = () => {
     return (
       <>
