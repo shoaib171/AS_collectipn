@@ -8,8 +8,9 @@ import reportWebVitals from "./reportWebVitals";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { PersistGate } from "redux-persist/integration/react";
+import store from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(

@@ -7,9 +7,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const HandleCart = useSelector((state) => state.HandleCart);
-  // useEffect(() => {
-  //   localStorage.setItem("AS_CART", JSON.stringify(HandleCart));
-  // }, [HandleCart]);
+
   const CartItem = (product) => {
     return (
       <div className="container mt-3 shadow-sm py-2">
@@ -49,10 +47,7 @@ const Cart = () => {
       </div>
     );
   };
-  // const HandleButton = (product) => {
-  //   dispatch(ADD_ITEM(product.qty));
-  //   dispatch(DELETE_ITEM(product.id));
-  // };
+
   const CartMessage = () => {
     return (
       <>
@@ -69,9 +64,6 @@ const Cart = () => {
     );
   };
 
-  useEffect(() => {
-    localStorage.setItem("AS_CART", JSON.stringify(HandleCart));
-  }, []);
   return (
     <>
       {HandleCart.length !== 0 && HandleCart.map(CartItem)}
