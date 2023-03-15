@@ -35,17 +35,21 @@ const Products = () => {
   const Loaded = () => {
     return (
       <>
-        <div className="col-md-3">
-          <Skeleton height={350} />
-        </div>
-        <div className="col-md-3">
-          <Skeleton height={350} />
-        </div>
-        <div className="col-md-3">
-          <Skeleton height={350} />
-        </div>
-        <div className="col-md-3">
-          <Skeleton height={350} />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <Skeleton height={350} />
+            </div>
+            <div className="col-md-3">
+              <Skeleton height={350} />
+            </div>
+            <div className="col-md-3">
+              <Skeleton height={350} />
+            </div>
+            <div className="col-md-3">
+              <Skeleton height={350} />
+            </div>
+          </div>
         </div>
       </>
     );

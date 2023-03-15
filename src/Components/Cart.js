@@ -1,27 +1,28 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import { ADD_ITEM, DELETE_ITEM } from "../Redux/action/Action";
 import { useDispatch, useSelector } from "react-redux";
 const Cart = () => {
   const dispatch = useDispatch();
 
   const HandleCart = useSelector((state) => state.HandleCart);
-
+  // useEffect(() => {
+  //   localStorage.setItem("AS_CART", JSON.stringify(HandleCart));
+  // }, [HandleCart]);
   const CartItem = (product) => {
     return (
       <div className="container mt-3 shadow-sm py-2">
         <div className="row ">
-          <div className="col-3 ">
+          <div className="col-4">
             <img
               src={product.image}
-              className="d-block w-100"
-              width={"80px"}
+              className=" d-block w-100"
               height={"80px"}
               alt={product.title}
             />
           </div>
-          <div className="col-6">
+          <div className="col-4">
             <h3>{`${product.title.substring(0, 18)}...`}</h3>
 
             <p className="lead fw-bolder">
@@ -30,15 +31,15 @@ const Cart = () => {
             </p>
           </div>
 
-          <div className="col-3">
+          <div className="col-4 text-center p-3">
             <button
-              className="btn btn-outline-dark me-4"
+              className="btn btn-outline-dark m-2 ms-5 "
               onClick={() => dispatch(ADD_ITEM(product))}
             >
               <i className="fa fa-plus"></i>
             </button>
             <button
-              className="btn btn-outline-dark me-4"
+              className="btn btn-outline-dark m-2 ms-5 "
               onClick={() => dispatch(DELETE_ITEM(product))}
             >
               <i className="fa fa-minus"></i>
@@ -67,6 +68,10 @@ const Cart = () => {
       </>
     );
   };
+
+  useEffect(() => {
+    localStorage.setItem("AS_CART", JSON.stringify(HandleCart));
+  }, []);
   return (
     <>
       {HandleCart.length !== 0 && HandleCart.map(CartItem)}

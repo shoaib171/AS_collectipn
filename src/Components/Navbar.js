@@ -4,15 +4,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { useAuth0 } from "@auth0/auth0-react";
 const Navbar = () => {
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const HandleCart = useSelector((state) => state.HandleCart);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 ">
         <div className="container ">
-          <a className="navbar-brand fw-bold fs-4 " href="#">
-            A&S Collection
-          </a>
+          <NavLink className="navbar-brand fw-bold fs-4 " to="/">
+            AS_Collection
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -33,7 +35,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  className="nav-link active"
+                  className="nav-link "
                   aria-current="page"
                   to="/products"
                 >
@@ -41,17 +43,13 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/about"
-                >
+                <NavLink className="nav-link " aria-current="page" to="/about">
                   About
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
-                  className="nav-link active"
+                  className="nav-link "
                   aria-current="page"
                   to="/contact"
                 >
@@ -59,17 +57,34 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
+
             <div className="buttons">
-              <NavLink to="/login" className="btn btn-outline-dark ms-2">
-                <i className="fa fa-sign-in me-2"></i>
-                Login
-              </NavLink>
-              <NavLink to="/register" className="btn btn-outline-dark ms-2">
-                <i className="fa fa-sign-in me-2"></i>
-                Register
-              </NavLink>
+              {isAuthenticated ? (
+                <NavLink
+                  to=""
+                  className="btn btn-outline-dark ms-2"
+                  onClick={() =>
+                    logout({
+                      logoutParams: { returnTo: window.location.origin },
+                    })
+                  }
+                >
+                  <i className="fa fa-sign-out me-2"></i>
+                  Logout
+                </NavLink>
+              ) : (
+                <NavLink
+                  to=""
+                  className="btn btn-outline-dark ms-2"
+                  onClick={() => loginWithRedirect()}
+                >
+                  <i className="fa fa-sign-in me-2"></i>
+                  Login
+                </NavLink>
+              )}
+
               <NavLink to="/cart" className="btn btn-outline-dark ms-2">
-                <i className="fa fa-sign-in me-2"></i>
+                <i className="fa fa-cart-plus me-2"></i>
                 Cart ({HandleCart.length})
               </NavLink>
             </div>

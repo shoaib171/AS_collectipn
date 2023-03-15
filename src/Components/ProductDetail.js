@@ -12,6 +12,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const GetProductsDetail = async () => {
       setLoading(true);
@@ -23,6 +24,7 @@ const ProductDetail = () => {
 
     GetProductsDetail();
   }, []);
+
   const dispatch = useDispatch();
   const AddProduct = (product) => {
     // alert("Button clicked");
