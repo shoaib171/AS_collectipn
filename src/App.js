@@ -12,7 +12,22 @@ import Cart from "./Components/Cart";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router-dom";
 function App() {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
+  const MessageShow = () => {
+    return (
+      <>
+        <div className="container text-center mt-5 bg-white shadow-lg py-5">
+          <div className="row ">
+            <div className="col-12">
+              <p className="fw-bold text-danger color-red fs-3">
+                please login to continue.....
+              </p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
   return (
     <div>
       <Navbar />
@@ -20,7 +35,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/cart"
-          element={isAuthenticated ? <Cart /> : <Navigate to="/products" />}
+          element={isAuthenticated ? <Cart /> : <MessageShow />}
         />
         <Route path="/products" element={<Products />} />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
