@@ -61,7 +61,7 @@ const Navbar = () => {
             <div className="buttons">
               {isAuthenticated ? (
                 <NavLink
-                  to=""
+                  to="/"
                   className="btn btn-outline-dark ms-2"
                   onClick={() =>
                     logout({
@@ -74,7 +74,7 @@ const Navbar = () => {
                 </NavLink>
               ) : (
                 <NavLink
-                  to=""
+                  to="/cart"
                   className="btn btn-outline-dark ms-2"
                   onClick={() => loginWithRedirect()}
                 >
