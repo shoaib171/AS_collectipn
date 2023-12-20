@@ -1,16 +1,34 @@
 /** @format */
-@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Rubik+Bubbles&family=Rubik+Gemstones&family=Rubik+Iso&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Rubik+Bubbles&family=Rubik+Gemstones&family=Rubik+Iso&display=swap');
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .navbar-brand {
-  font-family: "Rubik Iso", cursive;
+	font-family: 'Rubik Iso', cursive;
 }
 .navbar-nav a {
-  font-size: 18px;
+	font-size: 18px;
 }
 
 .navbar-nav :active {
-  color: red;
+	color: red;
+}
+
+.Services--part {
+	border-radius: 10px;
+	height: 250px;
+	background-color: #eeee;
+}
+.Services--part:hover {
+	background-color: #f8f9fa !important;
+}
+.Services--Mid {
+	border-radius: 10px;
+	height: 120px;
+	margin: 4px 0px;
+	background-color: #eeee;
+}
+.Services--Mid:hover {
+	background-color: #f8f9fa !important;
 }
